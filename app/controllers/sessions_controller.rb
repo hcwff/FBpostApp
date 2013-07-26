@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   	#raise env["omniauth.auth"].to_yaml
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-
     session[:user_image] = user.image
     redirect_to root_url
   end

@@ -4,23 +4,12 @@ class User
   field :provider
   field :uid
   field :name
+  field :image
   field :oauth_token
   field :oauth_expires_at, type: DateTime
 
-  
-
 
   has_many :post
-  #Mongoid.raise_not_found_error = false
-
-  # def count
-  #   u = User.where(id="51edc3054f0d0cd4ef000002")
-  #   if u != nil
-  #     puts "something's wrong"
-  #   else
-  #     return User.size();
-  #   end
-  # end
 
   def self.from_omniauth(auth)
     u = self.where(provider: auth.provider, uid: auth.uid).first
