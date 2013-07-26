@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brandbuddy</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+	<div id="container">
+    <div class="masthead">
+        <h3 class="muted">Test app</h3>
+        <div class="navbar">
+          <div id="profile">
+            <% unless !current_user %>   
+              <% if Image.last == nil %>
+                <%= image_tag(session[:user_image], :alt => "profile pic") %>
+              <% else %>
+                <%= image_tag Image.last.image_url, :class => "img-polaroid", :width => 50, :height => 50 %>
+              <% end %>
+              <%= render 'layouts/formtwo' %>
+            <% end %>
+          </div>
+          <% if current_user %>
+            Signed in as <strong><%= current_user.name %></strong>!<br />
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          <% end %> 
+        </div><!-- /.navbar -->
+      </div>
+
+
+
+
+
+      
+      <%= yield %>
+    </div>
+</body>
+</html>

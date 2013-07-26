@@ -1,0 +1,16 @@
+<div class="span6">
+
+  <h1>Hi this is a test app</h1>
+  <% if session[:user_id].nil? %>
+  		<h2> You are not logged in! </h2>
+  <% else %>
+		<%= link_to "Post new comment!", 'post/new' %> <br />
+		<%= link_to "Check old posts!", 'post/' %>
+  <% end %>
+
+</div>
+
+
+
+
+

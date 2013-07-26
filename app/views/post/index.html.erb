@@ -1,0 +1,16 @@
+<h1>Show comments</h1>
+<% if @post.empty? %>
+	<div class="comments">
+    <p> No comments </p>
+  </div>
+<% else %>
+  <% @post.all.each do |post| %>
+    <div class="comments">
+      <P> <%= post.comment %> </P>
+    </div>
+  <% end %>
+<% end %>
+
+<br />
+<%= link_to "Post new comments", new_path %>
+
